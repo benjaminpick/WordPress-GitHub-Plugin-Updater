@@ -380,7 +380,7 @@ class WP_GitHub_Updater {
 	 * Get Plugin info
 	 *
 	 * @since 1.0
-	 * @param bool    $false  always false
+	 * @param bool    $false  original value returned by other plugins
 	 * @param string  $action the API function being performed
 	 * @param object  $args   plugin arguments
 	 * @return object $response the plugin info
@@ -389,7 +389,7 @@ class WP_GitHub_Updater {
 
 		// Check if this call API is for the right plugin
 		if ( !isset( $response->slug ) || $response->slug != $this->config['slug'] )
-			return false;
+			return $false;
 
 		$response->slug = $this->config['slug'];
 		$response->plugin_name  = $this->config['plugin_name'];
